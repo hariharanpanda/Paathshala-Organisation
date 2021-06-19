@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Acme', sans-serif;
+}
+
+  body {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  nav {
+    background: #222;
+    padding: 0 15px;
+  }
+  .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar.sticky {
+    background: #1b1b1b;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu {
+    list-style-type: none;
+  }
+  .logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+  }
+  .item {
+    padding: 10px;
+  }
+  .item.button {
+    padding: 9px 5px;
+  }
+
+  .item:not(.button) a:hover,
+  .item a:hover::after {
+    color: #ccc;
+  }
+
+ 
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 5px;
+  }
+  .menu li.subitem a {
+    padding: 15px;
+  }
+  .toggle {
+    order: 1;
+    font-size: 20px;
+  }
+  .item.button {
+    order: 2;
+  }
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+  .button.secondary {
+   
+    border-bottom: 1px #444 solid;
+  }
+  
+  @media all and (min-width: 700px) {
+    .menu {
+      justify-content: center;
+    }
+    .logo {
+      flex: 1;
+    }
+    .item.button {
+      width: auto;
+      order: 1;
+      display: block;
+    }
+    .toggle {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+    .button a {
+      background: #0080ff;
+      border: 1px royalblue solid;
+    }
+    .button.secondary {
+      border: 0;
+    }
+    .button.secondary a {
+      background: transparent;
+      border: 1px #0080ff solid;
+    }
+    .button a:hover {
+      text-decoration: none;
+    }
+    .button:not(.secondary) a:hover {
+      background: royalblue;
+      border-color: darkblue;
+    }
+  }
+
+  @media all and (min-width: 960px) {
+    .menu {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      background: none;
+    }
+    .logo {
+      order: 0;
+      
+    }
+    .item {
+      order: 1;
+      position: relative;
+      display: block;
+      width: auto;
+    }
+    .button {
+      order: 2;
+    }
+    
+    .toggle {
+      display: none;
+    }
+  
+  }
+  
+
+section{
+    padding: 100px;
+}
+
+.banner{
+    position: relative;
+    min-height: 100vh;
+    background: url("images/banner.jpg");
+    background-size: cover ;
+    background-position: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner h2{
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.5em;
+}
+
+.banner h2 span{
+    font: 1.5em;
+    font-weight: 800;
+}
+
+.banner h3{
+    font-size: 1.5em ;
+    color: #fff;
+    font-weight: 500;
+}
+
+.btn{
+    position: relative;
+    display: inline-flex;
+    padding: 10px 30px;
+    margin-top: 20px;
+    background: #363636;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+    
+
+.heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+    font-family: 'Acme', sans-serif;
+}
+.heading h2{
+    font-weight: 600;
+    font-size: 30px;
+    font-family: 'Acme', sans-serif;
+}
+
+
+.about{
+    min-height: 100vh;
+    background: url("images/about.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+    
+}
+
+.about-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.content-box{
+    padding: 30px;
+    
+}
+
+.content-box h3{
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Acme', sans-serif;
+}
+
+
+  
+  @media (max-width: 991px){
+
+      section{
+          padding: 100px 50px ;
+      }
+
+      .banner{
+          padding: 150px 50px 100px ;
+      }
+
+      .banner h2{
+          font-size: 1.5em;
+      }
+
+      .banner h3{
+          font-size: 1em;
+      }
+
+      .btn{
+          margin-top: 10px;
+          padding: 10px 20px;
+          font-size: 16px;
+      }
+      
+      .heading h2{
+    
+          font-size: 24px;
+      }
+
+      .content-box h3{
+        font-size: 20px;
+        font-family: 'Acme', sans-serif;
+    }
+
+    .about-content{
+        flex-direction: column;
+    }
+    .con1{
+        margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 600px){
+   
+    .banner{
+        padding: 150px 20px 100px;
+    }
+
+    section{
+        padding: 100px 20px;
+    }
+  }
+
+
+  @media (max-width: 640px){
+
+      .about-content{
+          font-size: 15px;
+      }
+      .logo a {
+        font-size: 15px;
+      }
+  }
+
+  @media (max-width: 568px) {
+      h2{
+          font-size:2.5rem;
+      }
+  }
+
+
+  .bottom-container ul {
+    position:relative;
+    margin-top: 160px;
+    padding:10px;
+    display:flex;
+    justify-content: center;
+
+  }
+  .bottom-container ul li {
+    list-style:none;
+  }
+  .bottom-container ul li a {
+    display:block;
+    position:relative;
+    width:100px;
+    height:100px;
+    line-height:100px;
+    font-size:40px;
+    text-align:center;
+    text-decoration:none;
+    color:#fffefe;
+    margin: 0 30px;
+    transition:.5s;
+  }
+  .bottom-container ul li a span {
+    position:absolute;
+    transition: transform .5s;
+  }
+  .bottom-container ul li a span:nth-child(1),
+  .bottom-container ul li a span:nth-child(3){
+    width:100%;
+    height:3px;
+    background:#ffffff;
+  }
+  .bottom-container ul li a span:nth-child(1) {
+    top:0;
+    left:0;
+    transform-origin: right;
+  }
+  .bottom-containerul li a:hover span:nth-child(1) {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:transform .5s;
+  }
+  
+  .bottom-container ul li a span:nth-child(3) {
+    bottom:0;
+    left:0;
+    transform-origin: left;
+  }
+  .bottom-container ul li a:hover span:nth-child(3) {
+    transform: scaleX(0);
+    transform-origin: right;
+    transition:transform .5s;
+  }
+  
+  .bottom-container ul li a span:nth-child(2),
+  .bottom-container ul li a span:nth-child(4){
+    width:3px;
+    height:100%;
+    background:#fffdfd;
+  }
+  .bottom-container ul li a span:nth-child(2) {
+    top:0;
+    left:0;
+    transform:scale(0);
+    transform-origin: bottom;
+  }
+  .bottom-container ul li a:hover span:nth-child(2) {
+    transform: scale(1);
+    transform-origin: top;
+    transition:transform .5s;
+  }
+  .bottom-container ul li a span:nth-child(4) {
+    top:0;
+    right:0;
+    transform:scale(0);
+    transform-origin: top;
+  }
+  .bottom-container ul li a:hover span:nth-child(4) {
+    transform: scale(1);
+    transform-origin: bottom;
+    transition:transform .5s;
+  }
+  .bottom-container ul li a span:nth-child(5) {
+    top:0;
+    left:0;
+    transform-origin: right;
+  }
+  .bottom-containerul li a:hover span:nth-child(5) {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:transform .5s;
+  }
+  .bottom-container ul li a span:nth-child(6) {
+    top:0;
+    left:0;
+    transform-origin: right;
+  }
+  .bottom-containerul li a:hover span:nth-child(6) {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:transform .5s;
+  }
+  
+  .bottom-container .facebook:hover {
+    color: #3b5998;
+  }
+  .bottom-container .facebook:hover span { 
+    background: #3b5998;
+  }
+  .bottom-container .linkedin:hover {
+    color: #0077b5;
+  }
+  .bottom-container .linkedin:hover span { 
+    background: #0077b5;
+  }
+  .bottom-container .instagram:hover {
+    color: #c32aa3;
+  }
+  .bottom-container .instagram:hover span { 
+    background: #c32aa3;
+  }
+  .bottom-container .github:hover{
+    color: rgb(250, 250, 250);
+  }
+  .github:hover span { 
+    background: #faf6f6;
+  }
+  .bottom-container .envelope:hover {
+    color: #dd4b39;
+  }
+  .envelope:hover span { 
+    background: #dd4b39;
+  }
+  .bottom-container .phone:hover{
+    color: yellow;
+  }
+  .phone:hover span { 
+    color:yellow;
+  }
+  .bottom-container ul li a .linkedin {
+    color: #0077b5;
+  }
+  .bottom-container ul li a:hover:nth-child(3) {
+    color: #c32aa3;
+  }
+  .bottom-container ul li a:hover:nth-child(4) {
+    color: #fdfdfd;
+  }
+  .bottom-container ul li a:hover:nth-child(5) {
+    color: #dd4b39;
+  }
+  .bottom-container ul li a:hover:nth-child(6) {
+    color: yellow;
+  }
+  
+  
+ 
+ 
