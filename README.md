@@ -3,4 +3,4 @@
 
 WEBSITE LINK : - https://hariharanpanda.github.io/Paathshala-Organisation/
 
-This Project has been assigned to me by The Sparks Foundation || Education Management Singapore, Singapore under Graduate Rotational Internship Program (GRIP) || #GRIPJUNE21 || Web Development & Designing Intern || INTERSHIP .
+This Project has been assigned to me by The Sparks Foundation || Education Management Singapore, Singapore under Graduate Rotational Internship Program (GRIP) || #GRIPJUNE21 || Web Development & Designing Intern || INTERNSHIP .
