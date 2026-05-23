@@ -1,463 +1,1196 @@
 /* ==========================================================================
-   1. GOOGLE FONTS & ROOT CONFIGURATIONS
+   1. GOOGLE FONT IMPORT
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================================================
+   2. RESET + GLOBAL CONFIGURATION
+   ========================================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-:root {
-    --primary: #8b5cf6;
-    --secondary: #6d28d9;
-    --dark: #0f172a;
-    --dark2: #111827;
-    --light: #ffffff;
-    --gray: #cbd5e1;
-    --glass: rgba(255,255,255,0.05);
-    --border: rgba(139,92,246,0.25);
+:root{
+
+    --primary:#8b5cf6;
+    --secondary:#6d28d9;
+
+    --dark:#0f172a;
+    --dark2:#111827;
+    --dark3:#020617;
+
+    --light:#ffffff;
+    --gray:#cbd5e1;
+
+    --glass:rgba(255,255,255,0.05);
+    --glass-border:rgba(255,255,255,0.08);
+
+    --shadow:0 20px 40px rgba(0,0,0,0.35);
+
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--dark);
-    color: white;
-    overflow-x: hidden;
+html{
+    overflow-x:hidden;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:var(--dark);
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+
+    background:
+        radial-gradient(circle at top left,
+        rgba(139,92,246,0.15),
+        transparent 30%),
+
+        radial-gradient(circle at bottom right,
+        rgba(59,130,246,0.15),
+        transparent 30%),
+
+        #0f172a;
+
 }
 
 /* ==========================================================================
-   2. CUSTOM SCROLLBAR + GLOBAL UI
+   3. CONTINUOUS ANIMATED BACKGROUND
    ========================================================================== */
-::-webkit-scrollbar {
-    width: 10px;
+
+body::before{
+
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 18s linear infinite;
+
+    z-index:-3;
+
 }
 
-::-webkit-scrollbar-track {
-    background: #111827;
-}
+body::after{
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(var(--primary), var(--secondary));
-    border-radius: 20px;
+    content:"";
+    position:fixed;
+
+    width:900px;
+    height:900px;
+
+    background:
+        radial-gradient(circle,
+        rgba(139,92,246,0.18),
+        transparent 70%);
+
+    top:-300px;
+    left:-300px;
+
+    animation:glowMove 15s ease infinite alternate;
+
+    z-index:-2;
+
 }
 
 /* ==========================================================================
-   3. SCROLL TO TOP BUTTON (FIXED + ANIMATED)
+   4. FLOATING PARTICLES
    ========================================================================== */
-.scroll-top-btn {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 55px;
-    height: 55px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.4s ease;
-    box-shadow: 0 10px 25px rgba(139,92,246,0.4);
-    z-index: 999;
+
+.particle-container{
+
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:-1;
+
 }
 
-.scroll-top-btn.show {
-    opacity: 1;
-    pointer-events: auto;
-}
+.particle{
 
-.scroll-top-btn:hover {
-    transform: translateY(-6px) scale(1.1);
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.4);
+
+    animation:particleFloat linear infinite;
+
 }
 
 /* ==========================================================================
-   4. NAVBAR (GLASS EFFECT + STICKY STATE)
+   5. CUSTOM SCROLLBAR
    ========================================================================== */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 0 40px;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(14px);
-    transition: 0.4s ease;
+
+::-webkit-scrollbar{
+    width:10px;
 }
 
-.navbar.sticky {
-    background: #0f172a;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+::-webkit-scrollbar-track{
+    background:#111827;
 }
 
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    flex-wrap: wrap;
-}
+::-webkit-scrollbar-thumb{
 
-.logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 20px 0;
-}
+    background:
+        linear-gradient(
+            var(--primary),
+            var(--secondary)
+        );
 
-.logo a {
-    color: white;
-    text-decoration: none;
-}
-
-.item {
-    padding: 10px 18px;
-}
-
-.item a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.item a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 2px;
-    background: var(--primary);
-    transition: 0.4s ease;
-}
-
-.item a:hover::after {
-    width: 100%;
-}
-
-.active-link {
-    color: var(--primary) !important;
-}
-
-.toggle {
-    display: none;
-    font-size: 1.8rem;
-    cursor: pointer;
+    border-radius:20px;
 }
 
 /* ==========================================================================
-   5. SECTIONS BASE STRUCTURE
+   6. CURSOR GLOW
    ========================================================================== */
-section {
-    padding: 100px 8%;
-}
 
-.heading {
-    text-align: center;
-    margin-bottom: 60px;
-}
+.cursor-glow{
 
-.heading h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    position:fixed;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+        rgba(139,92,246,0.18),
+        transparent 70%);
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    z-index:0;
+
 }
 
 /* ==========================================================================
-   6. HERO SECTION (IMPACTFUL + MODERN)
+   7. SCROLL TO TOP BUTTON
    ========================================================================== */
-.banner {
-    position: relative;
-    min-height: 100vh;
-    background: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.85)),
-                url("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1920&auto=format&fit=crop");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
+.scroll-top-btn{
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    color:white;
+    font-size:1.1rem;
+
+    box-shadow:
+        0 15px 35px rgba(139,92,246,0.4);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:0.4s ease;
+
+    z-index:999;
+
 }
 
-.donate-text {
-    position: relative;
-    max-width: 800px;
+.scroll-top-btn.show{
+
+    opacity:1;
+    pointer-events:auto;
+
 }
 
-.banner h2 {
-    font-size: 4.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
+.scroll-top-btn:hover{
 
-.banner h3 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--gray);
-    margin-bottom: 40px;
+    transform:
+        translateY(-8px)
+        scale(1.08);
+
 }
 
 /* ==========================================================================
-   7. BUTTONS (PREMIUM UX)
+   8. NAVBAR
    ========================================================================== */
-.donate-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 34px;
-    border-radius: 60px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.4s ease;
-    box-shadow: 0 10px 30px rgba(139,92,246,0.35);
-    position: relative;
-    overflow: hidden;
-}
-
-.donate-btn:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 18px 45px rgba(139,92,246,0.45);
-}
-
-/* ==========================================================================
-   8. ABOUT SECTION (GLASS CARDS)
-   ========================================================================== */
-.about {
-    background: var(--dark2);
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-}
-
-.content-box {
-    background: var(--glass);
-    padding: 40px;
-    border-radius: 25px;
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    transition: 0.4s ease;
-}
-
-.content-box:hover {
-    transform: translateY(-10px);
-    border-color: var(--border);
-}
-
-.content-box h3 {
-    margin-bottom: 20px;
-    color: #c4b5fd;
-}
-
-.content-box p {
-    line-height: 1.9;
-    color: #dbe4ee;
-}
-
-/* ==========================================================================
-   9. IMPACT TRACKER (NEW PREMIUM SECTION)
-   ========================================================================== */
-.impact-section {
-    background: var(--dark);
-}
-
-.impact-card {
-    max-width: 650px;
-    margin: auto;
-    background: rgba(255,255,255,0.04);
-    padding: 40px;
-    border-radius: 25px;
-    border: 1px solid var(--border);
-    text-align: center;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
-
-#donationRange {
-    width: 100%;
-    margin: 20px 0;
-    accent-color: var(--primary);
-}
-
-.impact-value {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.impact-message {
-    margin-top: 10px;
-    color: var(--gray);
-    font-size: 1.1rem;
-}
-
-.impact-grid {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-.impact-item {
-    background: rgba(255,255,255,0.05);
-    padding: 12px 18px;
-    border-radius: 12px;
-    transition: 0.3s ease;
-}
-
-.impact-item:hover {
-    transform: translateY(-4px);
-    background: rgba(139,92,246,0.15);
-}
-
-/* ==========================================================================
-   10. DONATION SECTION
-   ========================================================================== */
-.donate-section {
-    text-align: center;
-    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.9)),
-                url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop");
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.donate-section p {
-    max-width: 700px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
-    color: #dbe4ee;
-}
-
-/* ==========================================================================
-   11. DONOR FEED (LIVE SYSTEM LOOK)
-   ========================================================================== */
-#donorList {
-    margin-top: 30px;
-}
-
-.donor {
-    background: rgba(255,255,255,0.05);
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 10px;
-    transition: 0.3s ease;
-}
-
-.donor:hover {
-    transform: translateX(5px);
-    background: rgba(139,92,246,0.15);
-}
-
-/* ==========================================================================
-   12. SOCIAL SECTION
-   ========================================================================== */
-.social-section {
-    background: #0f172a;
-}
-
-.bottom-container ul {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.bottom-container ul li a {
-    width: 65px;
-    height: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.4s ease;
-}
-
-.bottom-container ul li a:hover {
-    transform: translateY(-8px) scale(1.1);
-    background: var(--primary);
-    box-shadow: 0 15px 40px rgba(139,92,246,0.4);
-}
-
-/* ==========================================================================
-   13. FOOTER
-   ========================================================================== */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #020617;
-    color: #94a3b8;
-}
-
-/* ==========================================================================
-   14. ANIMATIONS
-   ========================================================================== */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.content-box,
-.heading,
-.impact-card,
-.donate-text {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s ease;
-}
-
-.show {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* ==========================================================================
-   15. RESPONSIVE DESIGN
-   ========================================================================== */
-@media(max-width:768px){
 
 .navbar{
-    padding:0 20px;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:0 50px;
+
+    z-index:1000;
+
+    background:
+        rgba(15,23,42,0.55);
+
+    backdrop-filter:blur(16px);
+
+    transition:0.4s ease;
+
 }
 
-.toggle{
-    display:block;
+.navbar.sticky{
+
+    background:#0f172a;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+
+}
+
+.menu{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    list-style:none;
+    flex-wrap:wrap;
+
+}
+
+.logo{
+
+    font-size:1.4rem;
+    font-weight:800;
+
+    padding:22px 0;
+
+}
+
+.logo a{
+
     color:white;
+    text-decoration:none;
+    letter-spacing:1px;
+
 }
 
 .item{
-    display:none;
+
+    padding:12px 18px;
+
+}
+
+.item a{
+
+    color:white;
+    text-decoration:none;
+
+    position:relative;
+
+    font-weight:500;
+
+    transition:0.3s ease;
+
+}
+
+.item a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+    height:2px;
+
+    background:var(--primary);
+
+    transition:0.4s ease;
+
+}
+
+.item a:hover::after{
+
     width:100%;
+
+}
+
+.item a:hover{
+
+    color:#c4b5fd;
+
+}
+
+.active-link{
+
+    color:var(--primary) !important;
+
+}
+
+.toggle{
+
+    display:none;
+    font-size:1.8rem;
+    cursor:pointer;
+
+}
+
+/* ==========================================================================
+   9. SECTIONS
+   ========================================================================== */
+
+section{
+
+    position:relative;
+    padding:120px 8%;
+
+}
+
+.heading{
+
     text-align:center;
-}
+    margin-bottom:70px;
 
-.active .item{
-    display:block;
-}
-
-.banner h2{
-    font-size:2.5rem;
 }
 
 .heading h2{
-    font-size:2rem;
+
+    font-size:3.3rem;
+    font-weight:800;
+
+    letter-spacing:0.5px;
+
 }
 
-.impact-value{
-    font-size:2.2rem;
+/* ==========================================================================
+   10. HERO SECTION
+   ========================================================================== */
+
+.banner{
+
+    position:relative;
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+            rgba(15,23,42,0.7),
+            rgba(15,23,42,0.85)
+        ),
+
+        url("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1920&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
 }
+
+.overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            rgba(15,23,42,0.75),
+            rgba(15,23,42,0.9)
+        );
+
+}
+
+.donate-text{
+
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+}
+
+.banner h2{
+
+    font-size:5rem;
+    font-weight:900;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+    animation:fadeUp 1s ease;
+
+}
+
+.banner h3{
+
+    font-size:1.4rem;
+    font-weight:400;
+
+    color:var(--gray);
+
+    margin-bottom:45px;
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+/* ==========================================================================
+   11. BUTTONS
+   ========================================================================== */
+
+.donate-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    padding:18px 36px;
+
+    border-radius:60px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    transition:0.4s ease;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 30px rgba(139,92,246,0.35);
+
+}
+
+.donate-btn:hover{
+
+    transform:
+        translateY(-7px)
+        scale(1.03);
+
+    box-shadow:
+        0 20px 45px rgba(139,92,246,0.45);
+
+}
+
+.pulse{
+
+    animation:pulse 1s infinite;
+
+}
+
+/* ==========================================================================
+   12. IMPACT TRACKER
+   ========================================================================== */
+
+.impact-tracker{
+
+    position:relative;
+
+    background:rgba(255,255,255,0.02);
+
+}
+
+.impact-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:35px;
+
+}
+
+.impact-card{
+
+    position:relative;
+
+    background:rgba(255,255,255,0.05);
+
+    padding:45px 30px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    transition:0.5s ease;
+
+    overflow:hidden;
+
+}
+
+.impact-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:rgba(139,92,246,0.35);
+
+    box-shadow:
+        0 25px 50px rgba(139,92,246,0.25);
+
+}
+
+.impact-icon{
+
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+
+    margin:auto;
+    margin-bottom:25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:2rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+}
+
+.counter{
+
+    font-size:3.3rem;
+    font-weight:800;
+
+    margin-bottom:12px;
+
+}
+
+.impact-card span{
+
+    color:#cbd5e1;
+    line-height:1.8;
+
+}
+
+/* ==========================================================================
+   13. ABOUT SECTION
+   ========================================================================== */
+
+.about{
+
+    background:var(--dark2);
+
+}
+
+.about-content{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+.content-box{
+
+    background:var(--glass);
+
+    padding:45px;
+
+    border-radius:28px;
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid var(--glass-border);
+
+    transition:0.5s ease;
+
+}
+
+.content-box:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(139,92,246,0.35);
+
+}
+
+.content-box h3{
+
+    margin-bottom:20px;
+
+    color:#c4b5fd;
+
+    font-size:1.4rem;
+
+}
+
+.content-box p{
+
+    line-height:1.95;
+
+    color:#dbe4ee;
+
+}
+
+/* ==========================================================================
+   14. VIDEO SECTION
+   ========================================================================== */
+
+.watch-section{
+
+    background:rgba(255,255,255,0.02);
+
+}
+
+.video-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:40px;
+
+}
+
+.video-card{
+
+    background:rgba(255,255,255,0.05);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    transition:0.5s ease;
+
+}
+
+.video-card:hover{
+
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    box-shadow:
+        0 30px 50px rgba(139,92,246,0.2);
+
+}
+
+.video-wrapper iframe{
+
+    width:100%;
+    height:240px;
+    border:none;
+
+}
+
+.video-content{
+
+    padding:28px;
+
+}
+
+.video-content h3{
+
+    margin-bottom:14px;
+    color:#c4b5fd;
+
+}
+
+.video-content p{
+
+    line-height:1.8;
+    color:#dbe4ee;
+
+}
+
+/* ==========================================================================
+   15. DONATE SECTION
+   ========================================================================== */
+
+.donate-section{
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(15,23,42,0.82),
+            rgba(15,23,42,0.9)
+        ),
+
+        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+}
+
+.donate-section p{
+
+    max-width:760px;
+
+    margin:auto;
+    margin-bottom:40px;
+
+    line-height:1.9;
+
+    color:#dbe4ee;
+
+}
+
+.payment-options-container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:25px;
+
+}
+
+/* ==========================================================================
+   16. SOCIAL SECTION
+   ========================================================================== */
+
+.social-section{
+
+    background:#0f172a;
+
+}
+
+.bottom-container ul{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:25px;
+
+}
+
+.bottom-container ul li{
+
+    list-style:none;
+
+}
+
+.bottom-container ul li a{
+
+    width:72px;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:1.5rem;
+
+    text-decoration:none;
+
+    transition:0.4s ease;
+
+}
+
+.bottom-container ul li a:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.1);
+
+    background:var(--primary);
+
+    box-shadow:
+        0 20px 40px rgba(139,92,246,0.35);
+
+}
+
+/* ==========================================================================
+   17. FOOTER
+   ========================================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:28px;
+
+    background:#020617;
+
+    color:#94a3b8;
+
+    font-size:0.95rem;
+
+}
+
+/* ==========================================================================
+   18. REVEAL ANIMATION
+   ========================================================================== */
+
+.content-box,
+.heading,
+iframe,
+.bottom-container ul li,
+.donate-text,
+.video-card,
+.impact-card{
+
+    opacity:0;
+    transform:translateY(50px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+.show{
+
+    opacity:1 !important;
+    transform:translateY(0) !important;
+
+}
+
+/* ==========================================================================
+   19. LOADER
+   ========================================================================== */
+
+.loader{
+
+    position:fixed;
+    inset:0;
+
+    background:#0f172a;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.loader::before{
+
+    content:"";
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    border:6px solid rgba(255,255,255,0.15);
+
+    border-top:6px solid var(--primary);
+
+    animation:spin 1s linear infinite;
+
+}
+
+.loader-hidden{
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.8s ease;
+
+}
+
+/* ==========================================================================
+   20. KEYFRAMES
+   ========================================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes gridMove{
+
+    from{
+
+        transform:translateY(0px);
+
+    }
+
+    to{
+
+        transform:translateY(40px);
+
+    }
+
+}
+
+@keyframes glowMove{
+
+    0%{
+
+        transform:translate(0,0);
+
+    }
+
+    100%{
+
+        transform:translate(450px,350px);
+
+    }
+
+}
+
+@keyframes particleFloat{
+
+    from{
+
+        transform:
+            translateY(100vh)
+            scale(0);
+
+    }
+
+    to{
+
+        transform:
+            translateY(-10vh)
+            scale(1);
+
+    }
+
+}
+
+/* ==========================================================================
+   21. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media(max-width:992px){
+
+    .banner h2{
+
+        font-size:4rem;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .navbar{
+
+        padding:0 22px;
+
+    }
+
+    .toggle{
+
+        display:block;
+        color:white;
+
+    }
+
+    .menu{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .logo{
+
+        width:100%;
+
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+    }
+
+    .item{
+
+        width:100%;
+        display:none;
+
+        text-align:center;
+
+        padding:16px 0;
+
+    }
+
+    .active .item{
+
+        display:block;
+
+    }
+
+    .banner h2{
+
+        font-size:2.8rem;
+
+    }
+
+    .banner h3{
+
+        font-size:1rem;
+
+    }
+
+    .heading h2{
+
+        font-size:2.3rem;
+
+    }
+
+    .counter{
+
+        font-size:2.5rem;
+
+    }
+
+    section{
+
+        padding:90px 7%;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .banner h2{
+
+        font-size:2.3rem;
+
+    }
+
+    .donate-btn{
+
+        padding:15px 26px;
+
+        font-size:0.9rem;
+
+    }
+
+    .content-box{
+
+        padding:32px;
+
+    }
 
 }
