@@ -2,43 +2,92 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Paathshala Organisation</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =========================================================
+         ADVANCED ANIMATED BACKGROUND
+    ========================================================== -->
+
+    <div class="floating-orb orb1"></div>
+    <div class="floating-orb orb2"></div>
+    <div class="floating-orb orb3"></div>
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
     <header>
+
         <nav class="navbar">
+
             <ul class="menu">
 
                 <li class="logo">
                     <a href="#">PAATHSHALA</a>
                 </li>
 
-                <li class="item"><a href="#home">Home</a></li>
-                <li class="item"><a href="#about">About</a></li>
-                <li class="item"><a href="#donate">Donate</a></li>
-                <li class="item"><a href="https://youtu.be/k8x53jDuFh4" target="_blank">Watch</a></li>
-                <li class="item"><a href="#socials">Contact</a></li>
+                <li class="item">
+                    <a href="#home">Home</a>
+                </li>
+
+                <li class="item">
+                    <a href="#impact">Impact</a>
+                </li>
+
+                <li class="item">
+                    <a href="#about">About</a>
+                </li>
+
+                <li class="item">
+                    <a href="#watch">Watch</a>
+                </li>
+
+                <li class="item">
+                    <a href="#donate">Donate</a>
+                </li>
+
+                <li class="item">
+                    <a href="#socials">Contact</a>
+                </li>
 
                 <li class="toggle">
                     <i class="fa fa-bars"></i>
                 </li>
 
             </ul>
+
         </nav>
+
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
     <main>
 
+        <!-- =========================================================
+             HERO SECTION
+        ========================================================== -->
+
         <section id="home" class="banner">
+
+            <div class="overlay"></div>
 
             <div class="donate-text">
 
@@ -51,121 +100,424 @@
                     Building Schools For Every Child
                 </h3>
 
-                <a href="#donate" class="donate-btn">
-                    <i class="fa fa-heart"></i>
-                    Support Our Cause
-                </a>
+                <p class="hero-description">
+
+                    Paathshala Organisation is committed to providing
+                    quality education, learning opportunities,
+                    and brighter futures for children living
+                    in underserved communities.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#donate" class="donate-btn">
+
+                        <i class="fa fa-heart"></i>
+                        Support Our Cause
+
+                    </a>
+
+                    <a href="#watch" class="secondary-btn">
+
+                        <i class="fa fa-play-circle"></i>
+                        Watch Stories
+
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
 
-        <!-- ================= IMPACT TRACKER (NEW READY BLOCK) ================= -->
-        <section class="impact-tracker">
+        <!-- =========================================================
+             LIVE IMPACT TRACKER
+        ========================================================== -->
+
+        <section id="impact" class="impact-tracker">
 
             <div class="heading">
+
                 <h2>Our Impact So Far</h2>
+
+                <p>
+
+                    Real-time educational outreach powered by
+                    volunteers, donors, and community support.
+
+                </p>
+
             </div>
 
-            <div class="about-content">
+            <div class="impact-grid">
 
-                <div class="content-box">
-                    <h3>📚 Children Educated</h3>
-                    <p class="counter" data-target="1200">0</p>
+                <!-- CARD 1 -->
+
+                <div class="impact-card">
+
+                    <div class="impact-icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+
+                    <h3>Children Educated</h3>
+
+                    <div class="counter" data-target="1200">
+                        0
+                    </div>
+
+                    <span>
+
+                        Students receiving free educational
+                        support and learning opportunities.
+
+                    </span>
+
                 </div>
 
-                <div class="content-box">
-                    <h3>🏫 Schools Supported</h3>
-                    <p class="counter" data-target="15">0</p>
+                <!-- CARD 2 -->
+
+                <div class="impact-card">
+
+                    <div class="impact-icon">
+                        <i class="fa fa-university"></i>
+                    </div>
+
+                    <h3>Schools Supported</h3>
+
+                    <div class="counter" data-target="15">
+                        0
+                    </div>
+
+                    <span>
+
+                        Rural learning centers and educational
+                        infrastructure supported.
+
+                    </span>
+
                 </div>
 
-                <div class="content-box">
-                    <h3>❤️ Donations Received</h3>
-                    <p class="counter" data-target="500">0</p>
+                <!-- CARD 3 -->
+
+                <div class="impact-card">
+
+                    <div class="impact-icon">
+                        <i class="fa fa-heart"></i>
+                    </div>
+
+                    <h3>Donations Received</h3>
+
+                    <div class="counter" data-target="500">
+                        0
+                    </div>
+
+                    <span>
+
+                        Generous contributors helping us
+                        transform children's lives.
+
+                    </span>
+
+                </div>
+
+                <!-- CARD 4 -->
+
+                <div class="impact-card">
+
+                    <div class="impact-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+
+                    <h3>Active Volunteers</h3>
+
+                    <div class="counter" data-target="85">
+                        0
+                    </div>
+
+                    <span>
+
+                        Passionate volunteers supporting
+                        awareness and education drives.
+
+                    </span>
+
                 </div>
 
             </div>
 
         </section>
 
-        <!-- ================= ABOUT SECTION ================= -->
+        <!-- =========================================================
+             ABOUT SECTION
+        ========================================================== -->
+
         <section id="about" class="about">
 
             <div class="heading">
+
                 <h2>About Us</h2>
+
+                <p>
+
+                    Education is a right, not a privilege.
+
+                </p>
+
             </div>
 
             <div class="about-content">
 
-                <div class="content-box">
-                    <h3>PAATHSHALA ORGANISATION</h3>
-                    <p>
-                        Right to education is a fundamental right. Yet many children
-                        are deprived of education because schools are not available
-                        near their villages.
-                        <br><br>
-                        Paathshala Organisation aims to build schools in remote
-                        areas and provide free primary education for every child.
-                        <br><br>
-                        We also conduct awareness sessions on hygiene, sanitation,
-                        and the importance of education.
-                        <br><br>
-                        Your contribution can transform lives and help create
-                        brighter futures for generations.
-                    </p>
-                </div>
+                <!-- LEFT -->
 
                 <div class="content-box">
-                    <iframe src="https://www.youtube.com/embed/k8x53jDuFh4"
-                        title="Paathshala Video"
+
+                    <h3>PAATHSHALA ORGANISATION</h3>
+
+                    <p>
+
+                        Right to education is a fundamental right.
+                        Yet many children are still deprived of education
+                        because schools are not available near their villages.
+
+                        <br><br>
+
+                        Paathshala Organisation aims to build schools,
+                        provide learning resources, and create educational
+                        opportunities for underprivileged children.
+
+                        <br><br>
+
+                        We conduct awareness programs on hygiene,
+                        literacy, digital learning, and community development.
+
+                        <br><br>
+
+                        Our mission is to ensure that every child,
+                        regardless of background, receives access
+                        to quality education and a brighter future.
+
+                    </p>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="content-box">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/k8x53jDuFh4"
+                        title="Paathshala Introduction"
                         allowfullscreen>
                     </iframe>
+
                 </div>
 
             </div>
 
         </section>
 
-        <!-- ================= DONATION SECTION ================= -->
+        <!-- =========================================================
+             WATCH SECTION
+        ========================================================== -->
+
+        <section id="watch" class="watch-section">
+
+            <div class="heading">
+
+                <h2>Watch Our Journey</h2>
+
+                <p>
+
+                    Explore stories, campaigns, and educational initiatives.
+
+                </p>
+
+            </div>
+
+            <div class="video-grid">
+
+                <!-- VIDEO 1 -->
+
+                <div class="video-card">
+
+                    <div class="video-wrapper">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/k8x53jDuFh4"
+                            title="Video 1"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Building Hope Through Education</h3>
+
+                        <p>
+
+                            Discover how education is changing
+                            lives across villages and communities.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- VIDEO 2 -->
+
+                <div class="video-card">
+
+                    <div class="video-wrapper">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/2z0W4mUV7l8"
+                            title="Video 2"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Why Every Child Deserves Education</h3>
+
+                        <p>
+
+                            Learn why access to schools and teachers
+                            can completely transform communities.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- VIDEO 3 -->
+
+                <div class="video-card">
+
+                    <div class="video-wrapper">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/gGH90hSq-PQ"
+                            title="Video 3"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Together We Can Create Change</h3>
+
+                        <p>
+
+                            Your support helps us provide books,
+                            classrooms, and brighter futures.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================================
+             DONATION SECTION
+        ========================================================== -->
+
         <section id="donate" class="donate-section">
 
             <div class="heading">
+
                 <h2>Support Our Mission</h2>
+
+                <p>
+
+                    Every contribution helps us educate children,
+                    provide books, and improve rural education systems.
+
+                </p>
+
             </div>
 
-            <p>
-                Every contribution helps us build schools, provide books,
-                and educate children in remote areas.
-            </p>
+            <!-- IMPACT SLIDER -->
+
+            <div class="impact-card">
+
+                <h3>Your Contribution Impact</h3>
+
+                <input
+                    type="range"
+                    id="donationRange"
+                    min="100"
+                    max="5000"
+                    step="100"
+                    value="500">
+
+                <div class="impact-value">
+
+                    ₹<span id="amount">500</span>
+
+                </div>
+
+                <div class="impact-message"
+                     id="impactText">
+
+                    📚 Provides educational support for children
+
+                </div>
+
+            </div>
+
+            <!-- PAYMENT OPTIONS -->
 
             <div class="payment-options-container">
 
-                <!-- Razorpay -->
+                <!-- RAZORPAY -->
+
                 <div class="razorpay-embed-btn"
                     data-url="https://pages.razorpay.com/pl_HOvrlr084KFg4S/view"
-                    data-text="Donate via Card/Netbanking"
+                    data-text="Donate via Card / Netbanking"
                     data-color="#8b5cf6"
                     data-size="large">
 
                     <script>
                         (function () {
+
                             var d = document;
+
                             var x = !d.getElementById('razorpay-embed-btn-js');
+
                             if (x) {
+
                                 var s = d.createElement('script');
+
                                 s.defer = true;
+
                                 s.id = 'razorpay-embed-btn-js';
+
                                 s.src = 'https://cdn.razorpay.com/static/embed_btn/bundle.js';
+
                                 d.body.appendChild(s);
+
                             }
+
                         })();
                     </script>
 
                 </div>
 
                 <!-- UPI -->
+
                 <a class="donate-btn"
-                   href="upi://pay?pa=yourupi@okhdfcbank&pn=Paathshala%20Organisation&cu=INR">
+                    href="upi://pay?pa=yourupi@okhdfcbank&pn=Paathshala%20Organisation&cu=INR">
 
                     <i class="fa fa-mobile"></i>
                     Donate via UPI
@@ -174,25 +526,129 @@
 
             </div>
 
+            <!-- LIVE DONOR FEED -->
+
+            <div id="donorList">
+
+                <div class="donor">
+                    ❤️ Ravi donated ₹500
+                </div>
+
+                <div class="donor">
+                    ❤️ Sneha donated ₹1200
+                </div>
+
+                <div class="donor">
+                    ❤️ Aman donated ₹300
+                </div>
+
+            </div>
+
         </section>
 
-        <!-- ================= SOCIAL SECTION ================= -->
+        <!-- =========================================================
+             SOCIAL SECTION
+        ========================================================== -->
+
         <section id="socials" class="social-section">
 
             <div class="heading">
+
                 <h2>Connect With Us</h2>
+
+                <p>
+
+                    Follow our journey and help spread education.
+
+                </p>
+
             </div>
 
             <div class="bottom-container">
 
                 <ul>
 
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                    <li><a href="mailto:example@gmail.com"><i class="fa fa-envelope"></i></a></li>
-                    <li><a href="tel:0000000000"><i class="fa fa-phone"></i></a></li>
+                    <!-- FACEBOOK -->
+
+                    <li>
+
+                        <a class="facebook"
+                            href="https://www.facebook.com/hariharan.panda.56"
+                            target="_blank">
+
+                            <i class="fa fa-facebook"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- LINKEDIN -->
+
+                    <li>
+
+                        <a class="linkedin"
+                            href="https://www.linkedin.com/in/hariharan-panda-b26a72181/"
+                            target="_blank">
+
+                            <i class="fa fa-linkedin"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- INSTAGRAM -->
+
+                    <li>
+
+                        <a class="instagram"
+                            href="https://www.instagram.com/hariharan_panda/"
+                            target="_blank">
+
+                            <i class="fa fa-instagram"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- GITHUB -->
+
+                    <li>
+
+                        <a class="github"
+                            href="https://github.com/hariharanpanda"
+                            target="_blank">
+
+                            <i class="fa fa-github"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- EMAIL -->
+
+                    <li>
+
+                        <a class="envelope"
+                            href="mailto:pandaabzariyon@gmail.com">
+
+                            <i class="fa fa-envelope"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- PHONE -->
+
+                    <li>
+
+                        <a class="phone"
+                            href="tel:6352610529">
+
+                            <i class="fa fa-phone"></i>
+
+                        </a>
+
+                    </li>
 
                 </ul>
 
@@ -202,12 +658,19 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
     <footer>
+
         © 2026 Paathshala Organisation • Built with ❤️ by Hariharan Panda
+
     </footer>
 
+    <!-- JS -->
     <script src="index.js"></script>
+
 </body>
 
 </html>
